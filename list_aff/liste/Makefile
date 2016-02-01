@@ -6,7 +6,7 @@
 #    By: aollivie <aollivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/02 08:22:38 by aollivie          #+#    #+#              #
-#    Updated: 2016/01/31 19:51:17 by aollivie         ###   ########.fr        #
+#    Updated: 2016/02/01 12:06:47 by aollivie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,9 @@ NAME = list.exe
 FLAG= -Wextra -Wall -Wpadded -Wstrict-prototypes -Wwrite-strings -Wconversion
 IDIR = ../../libft/libft.a
 LIB=-lncurses
-SRC = src_liste/main_list.c src_liste/ft_select_liste.c src_liste/ft_select_liste_free.c
+SRC = src_liste/main_list.c src_liste/ft_select_liste.c src_liste/ft_select_liste_free.c\
+		src_config_liste/ft_select_config_liste.c\
+		src_config_liste/ft_select_config_init.c
 
 OBJ = $(SRC:.c=.o)
 

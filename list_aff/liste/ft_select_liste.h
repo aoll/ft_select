@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_list.c                                        :+:      :+:    :+:   */
+/*   ft_select_liste.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aollivie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/31 17:39:54 by aollivie          #+#    #+#             */
-/*   Updated: 2016/02/01 12:09:51 by aollivie         ###   ########.fr       */
+/*   Created: 2016/01/31 17:37:44 by aollivie          #+#    #+#             */
+/*   Updated: 2016/02/01 10:06:45 by aollivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_select_liste.h"
-#include "../ft_select_config_liste.h"
+#ifndef FT_SELECT_LISTE_H
+#define FT_SELECT_LISTE_H
 
-int	main(int ac, char **av)
+#include "../../libft/libft.h"
+
+typedef struct s_liste	t_liste;
+struct	s_liste
 {
-	t_liste			*l;
-	t_config_liste	*c_l;
+	int			i_length;
+	short int	si_etat;
+	short int	si_start;
+	char		*s_name;
+	t_liste		*n;
+	t_liste		*p;
+};
 
-	if ((l = ft_select_liste((const int)(ac - 1),\
-						(const char **)(++av))) == NULL)
-		return (0);
-	c_l = ft_select_config_liste_new((const t_liste*)(l));
-	ft_select_liste_free(&l);
-	printf("align %zu\n", sizeof(t_liste));
-	ft_putstr("HELLO\n");
-	return (0);
-}
+t_liste		*ft_select_liste(const int ac, const char **tab);
+int			ft_select_liste_free(t_liste **liste);
+
+#endif

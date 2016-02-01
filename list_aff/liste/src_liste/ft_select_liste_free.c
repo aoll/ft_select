@@ -6,20 +6,21 @@
 /*   By: aollivie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 19:49:41 by aollivie          #+#    #+#             */
-/*   Updated: 2016/01/31 19:54:59 by aollivie         ###   ########.fr       */
+/*   Updated: 2016/02/01 10:05:41 by aollivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_select_list.h"
+#include "../ft_select_liste.h"
 
-static void	ft_liste_free(t_liste **liste)
+static void	ft_liste_free_prev(t_liste **liste)
 {
 	t_liste *l;
 
 	l = *liste;
 	if (l->p != NULL)
 	{
-		free(l->p->s_name);
+		if (l->p->s_name != NULL)
+			free(l->p->s_name);
 		l->p->s_name = NULL;
 		free(l->p);
 		l->p = NULL;
@@ -27,26 +28,23 @@ static void	ft_liste_free(t_liste **liste)
 	return ;
 }
 
-void		ft_select_liste_free(t_liste **liste)
+int			ft_select_liste_free(t_liste **liste)
 {
 	t_liste *l;
 
-	l = *liste;
+	if (liste == NULL || (l = *liste) == NULL)
+		return (0);
 	while (l->n)
 	{
-		ft_liste_free(&l);
+		ft_liste_free_prev(&l);
 		l = l->n;
 	}
 	if (l->p != NULL)
-	{
-		free(l->p->s_name);
-		l->p->s_name = NULL;
-		free(l->p);
-		l->p = NULL;
-	}
-	free(l->s_name);
+		ft_liste_free_prev(&l);
+	if (l->s_name != NULL)
+		free(l->s_name);
 	l->s_name = NULL;
 	free(l);
 	l = NULL;
-	return ;
+	return (1);
 }
