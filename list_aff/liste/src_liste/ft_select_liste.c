@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_select_liste.h"
+#include "../inc/ft_select_liste.h"
 
 static t_liste	*ft_liste_new(const char *s)
 {
@@ -21,6 +21,7 @@ static t_liste	*ft_liste_new(const char *s)
 	n->i_length = (int)ft_strlen(s);
 	n->si_etat = 0;
 	n->si_start = 0;
+	n->si_end = 0;
 	n->s_name = ft_strdup(s);
 	n->n = NULL;
 	n->p = NULL;
@@ -52,6 +53,20 @@ static int		ft_liste(t_liste **liste, const char *s)
 	return (1);
 }
 
+static int	ft_liste_link_start_end(t_liste **liste)
+{
+    t_liste *l;
+
+    if (*liste == NULL)
+	return (0);
+    l = *liste;
+    while (l->n)
+	l = l->n;
+    l->n = *liste;
+    (*liste)->p = l;
+    return (0);
+}
+
 t_liste			*ft_select_liste(const int ac, const char **tab)
 {
 	t_liste		*liste;
@@ -70,9 +85,10 @@ t_liste			*ft_select_liste(const int ac, const char **tab)
 			liste->si_etat = 2;
 			liste->si_start = 1;
 		}
-		else if (i_x == (ac - 1))
-			liste->si_start = 2;
+		if (i_x == (ac - 1))
+		    liste->si_end = 1;
 		i_x--;
 	}
+	ft_liste_link_start_end(&liste);
 	return (liste);
 }

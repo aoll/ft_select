@@ -10,29 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_CONFIG_LISTE_H
-#define FT_SELECT_CONFIG_LISTE_H
+#ifndef FT_SELECT_TREE_COL_H
+#define FT_SELECT_TREE_COL_H
 
-#include "../../libft/libft.h"
-#include "ft_select_liste.h"
+#include "../../../libft/libft.h"
+#include "ft_select_config_liste.h"
 #include <sys/ioctl.h>
 #include <termios.h>
 
-typedef struct s_config_liste	t_config_liste;
-struct	s_config_liste
+typedef struct s_tree_col	t_tree_col;
+struct	s_tree_col
 {
-	short int	si_y_term;
-	short int	si_x_term;
-	int			i_l_str_max;
-	int			i_nb_liste;
-	int			i_nb_col;
-	int			i_nb_ligne_col;
-	int			i_nb_col_aff;
-	int			i_index_col_aff;
+    t_liste **ptr_tab;
+    t_liste *ptr_curseur;
 };
 
-t_config_liste      *ft_select_config_liste_new(const t_liste *liste);
+t_tree_col      *ft_select_tree_col_new(t_liste **liste, const t_config_liste *t_c_l);
+void		ft_select_tree_print(const t_liste **ptr_tab, const t_config_liste *t_c_l);
+//int					ft_select_config_init(t_tree_col **t_t_l);
 
-int					ft_select_config_init(t_config_liste **t_c_l, const t_liste *liste);
-
+//int		    ft_select_config_free(t_tree_col **t_t_l);
 #endif

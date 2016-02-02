@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select_liste.h                                  :+:      :+:    :+:   */
+/*   ft_select_config_free.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aollivie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/31 17:37:44 by aollivie          #+#    #+#             */
-/*   Updated: 2016/02/01 10:06:45 by aollivie         ###   ########.fr       */
+/*   Created: 2016/02/01 09:57:54 by aollivie          #+#    #+#             */
+/*   Updated: 2016/02/01 15:56:04 by aollivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_LISTE_H
-#define FT_SELECT_LISTE_H
+#include "../inc/ft_select_config_liste.h"
 
-#include "../../libft/libft.h"
-
-typedef struct s_liste	t_liste;
-struct	s_liste
+int		ft_select_config_free(t_config_liste **t_c_l)
 {
-	int			i_length;
-	short int	si_etat;
-	short int	si_start;
-	char		*s_name;
-	t_liste		*n;
-	t_liste		*p;
-};
 
-t_liste		*ft_select_liste(const int ac, const char **tab);
-int			ft_select_liste_free(t_liste **liste);
-
-#endif
+	if (*t_c_l == NULL)
+	    return (0);
+	free(*t_c_l);
+	*t_c_l = NULL;
+	return (1);
+}

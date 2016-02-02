@@ -26,6 +26,8 @@ int     voir_touche()
 			printf("%d", buffer[0] - 0);
 			printf(", %d", buffer[1] - 0);
 			printf(", %d\n", buffer[2] - 0);
+
+
 			if (buffer[0] == 4)
 				{
 					printf("Ctlr+d, on quitte !\n");
@@ -60,6 +62,7 @@ int     voir_touche()
 					return (-1);
 				tputs(res, 0, putchar);
 			}
+
 		}
 	return (0);
 }

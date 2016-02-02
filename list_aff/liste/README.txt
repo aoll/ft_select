@@ -5,8 +5,10 @@ ft_select
 -- struct --
 - char *s	: str_name
 - int l   	: int_length
-- int e		: int_etat (0, 1, 2, 3) // pour laffichage
-- int start	: int_start (1er element de la liste) (0, 1, 2) 1 == start, 2 == end
+- small int e		: int_etat (0, 1, 2, 3) // pour laffichage
+- small int start	: int_start (1er element de la liste) (0, 1, 2) 1 == start, 2 == end
+- *n				: ->next
+- *p				: ->prev
 
 ------ ?????? pour le moment pas utile !!! -----
 - int y		: int_y (ligne ou se trouve lelement)
@@ -18,12 +20,15 @@ ft_select
 -- struct --
 - int y				: int_y_term
 - int x				: int_x_term
+
 - int l_max			: int_length_str_name_list
 - int nb_el			: int_nombre_delement_list
+
 - int nb_col		: int_nb_colonne
 - int nb_ligne_col		: int_nb_ligne_par_colonne
 - int nb_col_aff	: int_nb_col_aff
 - int index_col_aff	: int_index_col_aff
+
 -- end	--
 
 -- stuff for --

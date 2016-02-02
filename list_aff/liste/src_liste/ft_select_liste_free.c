@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_select_liste.h"
+#include "../inc/ft_select_liste.h"
 
 static void	ft_liste_free_prev(t_liste **liste)
 {
@@ -34,6 +34,18 @@ int			ft_select_liste_free(t_liste **liste)
 
 	if (liste == NULL || (l = *liste) == NULL)
 		return (0);
+	if (l->si_start == 1 && l->si_end == 1)
+	    {
+		if (l->s_name != NULL)
+		    free(l->s_name);
+		l->s_name = NULL;
+		free(l);
+		l = NULL;
+		return (1);
+	    }
+	if (l->p)
+	    if (l->p->n != NULL)
+		l->p->n = NULL;
 	while (l->n)
 	{
 		ft_liste_free_prev(&l);

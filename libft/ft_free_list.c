@@ -14,8 +14,10 @@
 
 static void	ft_free_list_st(char **i, int **l)
 {
-	if (i != NULL)
-		free(*i);
+	if (*i != NULL)
+		free(i);
+	if (*l != NULL)
+	    free(l);
 	l = NULL;
 	i = NULL;
 	return ;
